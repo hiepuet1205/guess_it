@@ -1,0 +1,55 @@
+// chua hoan thanh
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int check (int computer_number, int your_number){
+    int check = 0 ;
+
+    if ( your_number > computer_number ) {
+        check = 1 ;
+    }
+    if ( your_number < computer_number ) {
+        check = 2 ;
+    }
+
+    return check;
+}
+
+int get_number(int small, int big) {
+    return (small+big)/2;
+}
+
+void print_result(int computer_number, int your_number){
+    if ( your_number > computer_number ) cout << "too big \n" ;
+        else if ( your_number < computer_number ) cout << "too small \n" ;
+            else cout << "correct" << computer_number ;
+}
+int main()
+{
+    int your_number;
+
+    cout << "Enter your number: ";
+
+    cin >> your_number;
+
+    int computer_number,small=1,big=100;
+
+    if ( check(1,your_number)==0 & check(100,your_number)==0 )
+    {
+        do {
+            computer_number = get_number(small,big);
+            if ( check(computer_number,your_number)==1 ){
+                small = computer_number;
+            }
+            if ( check(computer_number,your_number)==2 ){
+                big = computer_number;
+            }
+            print_result(computer_number, your_number);
+        } while(computer_number != your_number);
+    }
+
+    return 0;
+}
